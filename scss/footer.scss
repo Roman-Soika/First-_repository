@@ -1,0 +1,49 @@
+//.==============================================================================
+@mixin flexbox () {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
+//.==============================================================================
+
+
+
+.footer {
+    background-color: #3c3c3c;
+    padding: 50px 0px 50px 0px;
+    position: relative;
+    z-index: 5;
+    // .footer__body
+    &__body {
+        text-align: center;
+    }
+    // .footer__logo
+    &__logo {
+        margin: 0px 0px 40px 0px;
+        display: inline-block;
+    }
+    // .footer__menu
+    &__menu {
+        margin: 0px 0px 35px 0px;
+        text-align: center;
+        a:hover {
+            color: #fff; 
+        }
+    }
+    // .footer___list
+    &__list {
+        @include flexbox ();
+        align-items: center;
+        justify-content: center;
+        li {
+            margin: 0px 12px;
+        }
+    }
+    // .footer__link
+    &__link {
+        font-size: 14px;
+        color: #a4a4a4;
+        
+    }
+    // .footer__text
+    &__text {
+        font-size: 14px;
+        color: #6c6c6c;
+    }
+}
