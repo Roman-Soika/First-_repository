@@ -1,0 +1,555 @@
+//<МИКСИНЫ>===============================================================================================
+@mixin anim($time,$delay){-webkit-transition: all $time ease $delay;-moz-transition: all $time ease $delay;-ms-transition: all $time ease $delay;-o-transition: all $time ease $delay;transition: all $time ease $delay;}
+@mixin anim_cubic($time, $delay) {-webkit-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-moz-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-ms-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;-o-transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;transition:all $time cubic-bezier(0.68,-0.55,0.265,1.55) $delay;}
+@mixin rotate($deg){-moz-transform: rotate($deg);-ms-transform: rotate($deg);-webkit-transform: rotate($deg);-o-transform: rotate($deg);transform: rotate($deg);}
+@mixin scale($num){-moz-transform: scale($num);-ms-transform: scale($num);-webkit-transform: scale($num);-o-transform: scale($num);transform: scale($num);}
+@mixin skew($num){-webkit-transform: skewX($num);-moz-transform: skewX($num);-ms-transform: skewX($num);-o-transform: skewX($num);transform: skewX($num);}
+@mixin cnt($h){display: flex;flex-direction: column;height: $h;text-align: center;align-items: stretch;justify-content: center;}
+@mixin tr($x,$y,$z){transform: translate3d($x, $y, $z);};
+@mixin flexbox() {display: -webkit-box;display: -moz-box;display: -ms-flexbox;display: -webkit-flex;display: flex;font-size: 0;}
+@mixin flexorder($val){-webkit-box-ordinal-group: $val;-moz-box-ordinal-group: $val;-ms-flex-order: $val;-webkit-order: $val;order: $val;}
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+
+//</Шрифт по умолчанию>==========================================================================================
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+//</ШРИФТЫ>=======================================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily:"Lato";
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth:320px;
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "nullstyle.scss";
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper{
+    overflow: hidden;
+    min-height: 100%;
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container{
+    max-width: 1130px;
+    padding: 0px 15px ;
+    margin: 0 auto;
+}
+
+//IBG>====================================================================================================
+.ibg{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	img{display: none;}
+}
+
+//SLIDER===================================================================================================
+
+
+.slick-track,.slick-list {}
+.slick-list {overflow: hidden;}
+.slick-track{@include flexbox();align-items: flex-start;}
+.slick-slide {}
+.slick-dots {
+    padding: 120px 0px 0px 0px;
+    @include flexbox();
+    align-items: center;
+    justify-content: center;
+    @media (max-width:767px) {
+        padding: 20px 0px 0px 0px;
+
+    }
+    li {
+        margin: 0px 9px;
+        button {
+            font-size: 0;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            border: 1px solid #c8c8c8;
+            background-color: transparent;
+        }
+        &.slick-active {
+            button {
+            background-color: #a9afb3;
+            }
+        }
+    }
+}
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+@import "header.scss";
+
+//.===================================================================================================================
+.page {
+    position: absolute;
+    min-height: 100%;
+    width: 100%;
+    top: 0;
+    height: 0;
+    @include flexbox ();
+    flex-direction: column;
+}
+
+.main-screen {
+    position: relative;
+    flex: 1 0 100%;
+	// .main-screen__bg
+	&__bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+}
+
+//.===================================================================================================================
+
+.generation {
+    background-color: #f7f7f7;
+    padding: 116px 0px 140px 0px;
+    @media (max-width:900px) {
+        padding: 70px 0px 100px 0px;
+    }
+    @media (max-width:600px) {
+        padding: 40px 0px 40px 0px;
+    }
+    // .generation__block
+    &__block {}
+}
+
+.block {
+    text-align: center;
+    // .block__icon
+    &__icon {
+        margin: 0px 0px 35px 0px;
+    }
+    // .block__title
+    &__title {
+        font-size: 20px;
+        color: #353738;
+        margin: 0px 0px 18px 0px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 1.2;
+        letter-spacing: 3.6px;
+    }
+    // .block__text
+    &__text {
+        position: relative;
+        font-size: 18px;
+        color: #848789;
+        line-height: 34px;
+        // .block__text_j
+        &_j {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 30px;
+            &::after {
+                content: '';
+                display: block;
+                margin: 35px auto 0px auto;
+                width: 50px;
+                height: 1px;
+                background-color: #d7d7d7b3;
+               
+            }
+        }
+    }
+}
+
+
+//.===================================================================================================================
+
+.brands {
+
+    // .brands__last
+    &_last {
+        @media (max-width:1100px){
+            & .brands__column {
+                &:nth-child(1) {
+                    order: 2;
+                }
+                &:nth-child(1) {
+                    order: 1;
+                }
+                &:nth-child(1) {
+                    order: 3;
+                }
+            }
+        }
+    }
+    // .brands__row
+    &__row {
+        @include flexbox();
+    }
+    // .brands__columnc
+    &__column {
+        flex: 0 1 33.333%;
+        // .brands__column_b
+        &_b {
+            flex: 0 1 66.666%;
+        }
+    }
+    // .brands__item
+    &__item {
+
+    }
+    // .brands__content
+    &__content {
+        padding: 70px 65px 55px 65px;
+        position: relative;
+        &::after {
+            content: "";
+            width: 0;
+            height: 0;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin: 0px 0px 0px -10px;
+            border-left: 10px solid transparent ;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #fff;
+        }
+    }
+    // .brands__image
+    &__image {
+        padding: 0px 0px 37.5% 0px;
+    }
+    @media (max-width:1500px) {
+        &__content {
+            padding: 40px 35px 30px 35px;
+        }
+    }
+    @media (max-width:1100px) {
+        &__row {
+            flex-direction: column;
+        }
+    }
+}
+
+.item {
+    position: relative;
+    height: 100%;
+    display: block;
+    // .item__logo
+    &__logo {
+        @include flexbox();
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(100, 194, 158, 0.5);
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+        @include anim (0.3s, 0s);
+        span {
+            color: #fff;
+            margin: 10px 0px 0px 0px;
+            font-size: 14px;
+            letter-spacing: 2.8px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+    }
+    // .item__image
+    &__image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    &:hover {
+        .item__logo {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    @media (max-width:1100px) {
+        padding: 0px 0px 70% 0px;
+    }
+}
+
+//.===================================================================================================================
+
+
+.slider {
+    padding: 125px 0px 65px 0px;
+    @media  (max-width:767px) {
+        padding: 50px 0px 35px 0px;
+        .brands {
+            background-color: black;
+        }
+    }
+    // .slider__body
+    &__body {
+        
+    }
+    // .slider__item
+    &__item {
+        text-align: center;
+    }
+    // .slider__icon
+    &__icon {
+        margin: 0px 0px 35px 0px;
+    }
+    // .slider__label
+    &__label {
+        font-size: 18px;
+        font-weight: 700;
+        color: #353738;
+        margin: 0px 0px 28px 0px;
+        
+        span {
+            font-weight:300;
+            color: #848789;
+            
+        }
+    }
+    // .slider__text
+    &__text {
+        font-size: 24px;
+        font-style: italic;
+        color: #848789;
+        line-height: 34px;
+        margin: 0px 0px 50px 0px;
+        font-weight: 700;
+    }
+}
+
+//.===================================================================================================================
+
+.shop {
+    // .shop__row
+    &__row {
+        @include flexbox();
+    }
+    // .shop__column
+    &__column {
+        flex: 0 1 16.666%;
+        // .shop__column_b
+        &_b {
+            flex: 0 1 33.333%
+        }
+    }
+    // .shop__block
+    &__block {}
+    // .shop__footer
+    &__footer {
+        text-align: center;
+        padding: 75px 0px 75px 0px;
+        background-color: #282f35;
+    }
+    // .shop__btn
+    &__btn {
+        display: inline-block;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #fff;
+        font-size:14px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 48px;
+        padding: 0px 60px ;
+        letter-spacing: 2.8px;
+    }
+    @media  (max-width:1100px) {
+        &__row {
+            flex-wrap: wrap;
+        }
+        &__column {
+            flex: 0 1 50%;
+            &_b {
+                flex: 0 1 100%;
+            }
+        }
+        &__btn {
+            padding: 0px 30px;
+        }
+    }
+}
+.block-shop {
+    min-height: auto;
+    // .block-shop__row
+    &__row {
+        @include flexbox();
+    }
+    // .block-shop__column
+    &__column {
+        flex: 0 1 50%;
+    }
+    // .block-shop__item
+    &__item {
+        height: auto;
+        padding: 0px 0px 50% 0px;
+        // .block-shop__item_l
+        &_l {
+            padding: 0px 0px 100% 0px;
+        }
+        // .block-shop__item_b
+        &_b {
+            padding: 0px 0px 200% 0px;
+        }
+    }
+}
+
+
+//.===================================================================================================================
+
+.subscribe {
+    padding: 110px 0px;
+    // .subscribe__body
+    &__body {
+        text-align: center;
+        max-width: 534px;
+        margin: 0px auto;
+    }
+    // .subscribe__icon
+    &__icon {
+        display: inline-block;
+        margin: 0px 0px 38px 0px;
+    }
+    // .subscribe__label
+    &__label {
+        font-size: 24px;
+        color: #848789;
+        font-style: italic;
+        margin: 0px 0px 38px 0px;
+    }
+    // .subscribe__form
+    &__form {
+        @include flexbox();
+        align-items: center;
+        justify-content: center;
+        max-width: 534px;
+    }
+    // .subscribe__input
+    &__input {
+        flex: 1 1 auto;
+        padding: 0px 8px 0px 0px;
+        input {
+            height: 70px;
+            width: 100%;
+            border:1px solid #d3d7d9;
+            padding: 28px;
+            background-color: #fff;
+            font-size: 20px;
+            color: #5b5858;
+            font-style: italic;
+            padding: 0px 28px ;
+            &::placeholder {
+                color: #929292;
+                font-style: italic;
+            }
+        }
+    }
+    // .subscribe__button
+    &__button {
+        flex: 0 0 126px;
+    }
+    // .subscribe__btn
+    &__btn {
+        color: #fff;
+        text-transform: uppercase;
+        background-color: #64c29e;
+        width: 100%;
+        height: 70px;
+        font-size: 24px;
+    }
+    @media  (max-width:750px) {
+        padding: 50px 0;
+    }
+
+    @media  (max-width:500px) {
+        &__form {
+            display: block;
+        }
+        &__input {
+			padding: 0px 0px 8px 0px;
+		}
+    }
+}
+
+//.===================================================================================================================
+
+.footer {
+    padding: 100px 0px ;
+    background-color: #f7f7f7;
+    // .footer__row
+    &__row {
+        @include flexbox() ;
+        align-items: center;
+    }
+    // .footer__column
+    &__column {
+        flex: 0 1 33.333%;
+    }
+    // .footer__address
+    &__address {
+        font-size: 14px;
+        line-height: 18px;
+        // font-style: italic;
+        color: #848789;
+        p {
+            &:nth-child(1){
+                font-weight: 700
+            }
+         }
+    }
+    // .footer__social
+    &__social {}
+    // .footer__dev
+    &__dev {}
+    @media  (max-width:1100px) {
+        padding: 50px 0px ;
+    }
+    @media  (max-width:600px) {
+        padding: 30px 0;
+        &__row {
+            flex-direction: column;
+            text-align: center;
+        }
+        &__social {
+            margin: 15px 0;
+        }
+      
+    }
+}
+
+.social {
+    text-align: center;
+    // .social__link
+    &__link {
+        margin: 0 7px;
+    }
+}
+.dev {
+    @include flexbox();
+    align-items: center;
+    justify-content: flex-end;
+    // .dev__text
+    &__text {
+        font-size: 14px;
+        color: #848789;
+        margin: 0px 10px 0px 0px;
+        font-style: italic;
+    }
+    // .dev__icon
+    &__icon {}
+}
+
