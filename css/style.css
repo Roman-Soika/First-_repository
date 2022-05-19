@@ -85,6 +85,11 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto;
 }
 
+@media (max-width: 767px) {
+  body.lock {
+    overflow: hidden;
+  }
+}
 .ibg {
   background-repeat: no-repeat;
   background-size: cover;
@@ -167,6 +172,11 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
   -webkit-transform: translate3d(-50%, 0, 0);
           transform: translate3d(-50%, 0, 0);
+}
+@media (max-width: 767px) {
+  .header.active {
+    position: fixed;
+  }
 }
 
 .menu__list {
